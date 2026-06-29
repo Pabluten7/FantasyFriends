@@ -23,6 +23,20 @@ export default function RootLayout() {
           title: "Crear cuenta"
         }}
       />
+
+      <Stack.Screen
+        name="leagues/index"
+        options={{
+          title: "Mis ligas"
+        }}
+      />
+
+      <Stack.Screen
+        name="leagues/create"
+        options={{
+          title: "Crear liga"
+        }}
+      />
     </Stack>
   );
 }
