@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
-import { mockLeagues } from "@/features/leagues/mockLeagues";
+import { leagues } from "@/features/leagues/mockData";
 
 export default function LeaguesScreen() {
   return (
@@ -15,21 +15,29 @@ export default function LeaguesScreen() {
       </View>
 
       <FlatList
-        data={mockLeagues}
+        data={leagues}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.leagueName}>{item.name}</Text>
+          <Link
+            href={{
+              pathname: "/leagues/detail",
+              params: { leagueId: item.id }
+            }}
+            asChild
+          >
+            <Pressable style={styles.card}>
+              <Text style={styles.leagueName}>{item.name}</Text>
 
-            <Text style={styles.cardText}>
-              {item.membersCount} miembros · Jornada {item.currentWeek}
-            </Text>
+              <Text style={styles.cardText}>
+                {item.membersCount} miembros · Jornada {item.currentWeek}
+              </Text>
 
-            <Text style={styles.position}>
-              Vas #{item.userPosition} en esta liga
-            </Text>
-          </View>
+              <Text style={styles.position}>
+                Vas #{item.userPosition} en esta liga
+              </Text>
+            </Pressable>
+          </Link>
         )}
       />
 

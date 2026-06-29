@@ -1,28 +1,55 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
-import { APP_DESCRIPTION, APP_NAME } from "@/lib/constants";
+import { useLineUpStore } from "@/features/leagues/LineUpStore";
 
-export default function HomeScreen() {
+export default function LeaguesScreen() {
+  const { leagues } = useLineUpStore();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.badge}>Beta privada</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Mis ligas</Text>
 
-      <Text style={styles.title}>{APP_NAME}</Text>
+        <Text style={styles.subtitle}>
+          Aquí aparecerán las ligas privadas en las que participas.
+        </Text>
+      </View>
 
-      <Text style={styles.subtitle}>{APP_DESCRIPTION}</Text>
+      <FlatList
+        data={leagues}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.list}
+        renderItem={({ item }) => (
+          <Link
+            href={{
+              pathname: "/leagues/detail",
+              params: { leagueId: item.id }
+            }}
+            asChild
+          >
+            <Pressable style={styles.card}>
+              <Text style={styles.leagueName}>{item.name}</Text>
 
-      <View style={styles.links}>
-        <Link href="/leagues" style={styles.primaryLink}>
-          Entrar a la app
+              <Text style={styles.cardText}>
+                {item.membersCount} miembros · Jornada {item.currentWeek}
+              </Text>
+
+              <Text style={styles.position}>
+                Vas #{item.userPosition} en esta liga · {item.budget}M
+              </Text>
+            </Pressable>
+          </Link>
+        )}
+      />
+
+      <View style={styles.actions}>
+        <Link href="/leagues/create" style={styles.primaryLink}>
+          Crear liga
         </Link>
 
-        <Link href="/auth/login" style={styles.secondaryLink}>
-          Iniciar sesión
-        </Link>
-
-        <Link href="/auth/register" style={styles.secondaryLink}>
-          Crear cuenta
+        <Link href="/" style={styles.secondaryLink}>
+          Volver al inicio
         </Link>
       </View>
     </View>
@@ -33,35 +60,50 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "#f9fafb"
   },
-  badge: {
-    marginBottom: 16,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: "#111827",
-    color: "#ffffff",
-    fontSize: 13,
-    fontWeight: "700"
+  header: {
+    marginBottom: 24
   },
   title: {
-    fontSize: 42,
+    fontSize: 34,
     fontWeight: "900",
-    marginBottom: 12,
-    color: "#111827"
+    color: "#111827",
+    marginBottom: 8
   },
   subtitle: {
-    fontSize: 17,
-    textAlign: "center",
-    color: "#4b5563",
-    marginBottom: 36
+    fontSize: 16,
+    color: "#4b5563"
   },
-  links: {
-    width: "100%",
-    gap: 14
+  list: {
+    gap: 14,
+    paddingBottom: 24
+  },
+  card: {
+    padding: 18,
+    borderRadius: 18,
+    backgroundColor: "#ffffff",
+    borderWidth: 1,
+    borderColor: "#e5e7eb"
+  },
+  leagueName: {
+    fontSize: 21,
+    fontWeight: "900",
+    color: "#111827",
+    marginBottom: 8
+  },
+  cardText: {
+    fontSize: 15,
+    color: "#4b5563",
+    marginBottom: 8
+  },
+  position: {
+    fontSize: 15,
+    fontWeight: "800",
+    color: "#111827"
+  },
+  actions: {
+    gap: 12
   },
   primaryLink: {
     width: "100%",
