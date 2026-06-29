@@ -1,0 +1,1 @@
+export const SUPABASE_IS_NOT_CONFIGURED_YET = true;

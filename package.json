@@ -1,0 +1,12 @@
+{
+  "name": "fantasyfriends",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "mobile": "pnpm --filter mobile start",
+    "mobile:android": "pnpm --filter mobile android",
+    "mobile:ios": "pnpm --filter mobile ios",
+    "mobile:web": "pnpm --filter mobile web"
+  },
+  "devDependencies": {}
+}

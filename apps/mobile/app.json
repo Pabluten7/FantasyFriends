@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "FantasyFriends",
+    "slug": "fantasyfriends",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "fantasyfriends",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#111827"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
