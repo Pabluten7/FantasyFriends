@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "FantasyFriends",
-    "slug": "fantasyfriends",
+    "name": "LineUp",
+    "slug": "LineUp",
     "version": "0.1.0",
     "orientation": "portrait",
-    "scheme": "fantasyfriends",
+    "scheme": "LineUp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

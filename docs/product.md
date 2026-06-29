@@ -1,6 +1,6 @@
-# FantasyFriends
+# LineUp
 
-FantasyFriends es una aplicación móvil privada para grupos de amigos.
+LineUp es una aplicación móvil privada para grupos de amigos.
 
 La lógica es similar a una fantasy league, pero en vez de fichar futbolistas, cada usuario ficha amigos del grupo. Los jugadores reciben puntos semanalmente según eventos graciosos, anécdotas, momentos memorables y situaciones de la vida social del grupo.
 

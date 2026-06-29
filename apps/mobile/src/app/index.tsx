@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>FantasyFriends</Text>
+      <Text style={styles.title}>LineUp</Text>
 
       <Text style={styles.subtitle}>
         La fantasy league de tu grupo de amigos.

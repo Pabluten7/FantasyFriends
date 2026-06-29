@@ -1,4 +1,4 @@
--- Schema inicial de FantasyFriends.
+-- Schema inicial de LineUp.
 -- Todavía no se ejecuta.
 -- Lo usaremos cuando empecemos con Supabase.
 
